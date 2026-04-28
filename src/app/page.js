@@ -1,65 +1,247 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { BookOpen, Globe, Users, Trophy, ArrowRight, CheckCircle2 } from "lucide-react";
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="flex flex-col min-h-screen">
+      {/* Hero Section */}
+      <section className="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+            alt="Students on campus"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/60 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left flex flex-col md:items-start items-center">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="max-w-3xl"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <motion.span variants={fadeIn} className="inline-block py-1 px-3 rounded-full bg-accent/20 border border-accent/50 text-accent-light font-medium text-sm mb-6 backdrop-blur-md">
+              Welcome to Primegate International Academy
+            </motion.span>
+            
+            <motion.h1 variants={fadeIn} className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+              Nurturing Excellence for a <span className="text-accent-light">Global Future</span>
+            </motion.h1>
+            
+            <motion.p variants={fadeIn} className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl leading-relaxed">
+              Empowering students through a world-class blend of British and Nigerian curricula, preparing them for the 21st-century workplace in Lokogoma, Abuja.
+            </motion.p>
+            
+            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+              <Link href="/admissions" className="bg-accent hover:bg-accent-light text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-[0_0_20px_rgba(217,119,6,0.4)] hover:shadow-[0_0_30px_rgba(245,158,11,0.6)] flex items-center justify-center gap-2 hover:-translate-y-1">
+                Apply Now <ArrowRight size={20} />
+              </Link>
+              <Link href="/about" className="glass hover:bg-white/20 text-white px-8 py-4 rounded-full font-bold text-lg transition-all flex items-center justify-center">
+                Explore Campus
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
-      </main>
+      </section>
+
+      {/* About Preview */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={fadeIn}
+              className="lg:w-1/2 relative"
+            >
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
+                <Image
+                  src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                  alt="Students learning"
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+              <div className="absolute -bottom-8 -right-8 glass-dark text-white p-8 rounded-2xl shadow-xl max-w-xs hidden md:block">
+                <p className="text-3xl font-bold text-accent-light mb-1">10+</p>
+                <p className="text-sm">Years of Educational Excellence since 2014</p>
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="lg:w-1/2"
+            >
+              <motion.h2 variants={fadeIn} className="text-sm font-bold text-accent tracking-wider uppercase mb-2">About Primegate</motion.h2>
+              <motion.h3 variants={fadeIn} className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                An Internationally Acclaimed Institution
+              </motion.h3>
+              <motion.p variants={fadeIn} className="text-gray-600 mb-6 text-lg leading-relaxed">
+                Located in the heart of Lokogoma, Abuja, Primegate International Academy focuses on nurturing all-round development through practical learning and modern technology.
+              </motion.p>
+              
+              <div className="space-y-4 mb-8">
+                {[
+                  "Practical learning driven by technology",
+                  "Preparation for the 21st-century workplace",
+                  "Instilling excellence, integrity, and global relevance"
+                ].map((item, i) => (
+                  <motion.div key={i} variants={fadeIn} className="flex items-start gap-3">
+                    <CheckCircle2 className="text-accent shrink-0 mt-1" size={20} />
+                    <span className="text-gray-700 font-medium">{item}</span>
+                  </motion.div>
+                ))}
+              </div>
+              
+              <motion.div variants={fadeIn}>
+                <Link href="/about" className="inline-flex items-center gap-2 text-primary font-bold hover:text-primary-light transition-colors group">
+                  Discover Our Story <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Curriculum Highlights */}
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-100 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/2"></div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
+            <h2 className="text-sm font-bold text-accent tracking-wider uppercase mb-2">Our Academics</h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Dual Curriculum Approach</h3>
+            <p className="text-gray-600 text-lg">We offer a robust blend of the British and Nigerian curricula to ensure our students are globally competitive yet locally relevant.</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Early Years",
+                desc: "EYFS & Montessori framework providing a solid foundation for lifelong learning.",
+                icon: <Users size={32} />,
+                color: "bg-blue-50 text-blue-600",
+                img: "https://images.unsplash.com/photo-1588075592446-265fd1e6e76f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              },
+              {
+                title: "Primary School",
+                desc: "Engaging, inquiry-based learning developing critical thinking and problem-solving skills.",
+                icon: <BookOpen size={32} />,
+                color: "bg-amber-50 text-amber-600",
+                img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              },
+              {
+                title: "Secondary School",
+                desc: "Cambridge aligned curriculum preparing students for outstanding IGCSE results.",
+                icon: <Globe size={32} />,
+                color: "bg-emerald-50 text-emerald-600",
+                img: "https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              }
+            ].map((program, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2, duration: 0.5 }}
+                className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group"
+              >
+                <div className="h-48 relative overflow-hidden">
+                  <Image 
+                    src={program.img} 
+                    alt={program.title} 
+                    fill 
+                    className="object-cover group-hover:scale-110 transition-transform duration-700" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className={`absolute bottom-4 left-4 w-12 h-12 rounded-xl flex items-center justify-center bg-white ${program.color} shadow-md`}>
+                    {program.icon}
+                  </div>
+                </div>
+                <div className="p-8">
+                  <h4 className="text-xl font-bold text-gray-900 mb-3">{program.title}</h4>
+                  <p className="text-gray-600 mb-6">{program.desc}</p>
+                  <Link href="/academics" className="text-primary font-medium hover:text-accent transition-colors flex items-center gap-1">
+                    Learn more <ArrowRight size={16} />
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 bg-primary relative overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-10">
+          <Image
+            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+            alt="Background pattern"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            <motion.h2 variants={fadeIn} className="text-3xl md:text-5xl font-bold text-white mb-6">
+              Ready to Shape Your Child's Future?
+            </motion.h2>
+            <motion.p variants={fadeIn} className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+              Join the Primegate family and give your child the foundation they need to succeed in a globalized world.
+            </motion.p>
+            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/admissions" className="bg-accent hover:bg-accent-light text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:-translate-y-1">
+                Begin Application
+              </Link>
+              <Link href="/contact" className="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-full font-bold text-lg transition-all backdrop-blur-sm">
+                Schedule a Tour
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
