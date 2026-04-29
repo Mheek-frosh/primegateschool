@@ -28,8 +28,8 @@ export default function Home() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
-            alt="Students on campus"
+            src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+            alt="Beautiful school campus"
             fill
             className="object-cover"
             priority
@@ -208,11 +208,109 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Core Values Section */}
+      <section className="py-24 bg-white relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-sm font-bold text-accent tracking-wider uppercase mb-2"
+            >
+              Our Core Values
+            </motion.h2>
+            <motion.h3 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-3xl md:text-4xl font-bold text-gray-900 mb-6"
+            >
+              What Drives Us Forward
+            </motion.h3>
+          </div>
+          
+          <div className="grid md:grid-cols-4 gap-8">
+            {[
+              { title: "Excellence", icon: <Trophy size={28} />, desc: "Striving for the highest standards in all our endeavors." },
+              { title: "Integrity", icon: <CheckCircle2 size={28} />, desc: "Upholding strong moral and ethical principles." },
+              { title: "Innovation", icon: <Globe size={28} />, desc: "Embracing new ideas and creative problem-solving." },
+              { title: "Community", icon: <Users size={28} />, desc: "Fostering a supportive and inclusive environment." }
+            ].map((value, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-slate-50 rounded-2xl p-8 text-center hover:shadow-xl transition-all hover:-translate-y-2 border border-slate-100"
+              >
+                <div className="w-16 h-16 mx-auto bg-primary/10 text-primary rounded-full flex items-center justify-center mb-6">
+                  {value.icon}
+                </div>
+                <h4 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h4>
+                <p className="text-gray-600">{value.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Campus Facilities Preview */}
+      <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+            alt="Campus Facilities"
+            fill
+            className="object-cover opacity-20"
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col md:flex-row gap-12 items-center">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="md:w-1/2"
+            >
+              <h2 className="text-sm font-bold text-accent tracking-wider uppercase mb-2">World-Class Facilities</h2>
+              <h3 className="text-3xl md:text-4xl font-bold mb-6">Designed for Modern Learning</h3>
+              <p className="text-gray-300 text-lg mb-8">
+                Our campus provides a safe, stimulating, and technologically advanced environment where students can discover their passions and reach their full potential.
+              </p>
+              <ul className="space-y-4 mb-8">
+                {['State-of-the-art Science & ICT Labs', 'Modern Library & Resource Center', 'Spacious Sports Complex', 'Creative Arts Studios'].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3">
+                    <CheckCircle2 className="text-accent" size={20} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link href="/facilities" className="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white px-6 py-3 rounded-full font-bold transition-all">
+                Tour Our Campus <ArrowRight size={18} />
+              </Link>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="md:w-1/2 grid grid-cols-2 gap-4"
+            >
+              <Image src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Lab" width={300} height={400} className="rounded-2xl object-cover h-64 w-full" />
+              <Image src="https://images.unsplash.com/photo-1546410531-bea5acadb6a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Sports" width={300} height={400} className="rounded-2xl object-cover h-64 w-full mt-8" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-24 bg-primary relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">
           <Image
-            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+            src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
             alt="Background pattern"
             fill
             className="object-cover"
