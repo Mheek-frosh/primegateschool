@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1E3A8A; /* tailwind blue-900 */
-  --color-primary-light: #3B82F6; /* tailwind blue-500 */
-  --color-accent: #D97706; /* tailwind amber-600 / gold */
-  --color-accent-light: #F59E0B; /* tailwind amber-500 */
+  --color-primary: #7A3935;
+  --color-primary-light: #9A4B46;
+  --color-accent: #C9CACF;
+  --color-accent-light: #E5E6EA;
   --color-background: #ffffff;
   --color-foreground: #171717;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -40,7 +40,7 @@ body {
 }
 
 .glass-dark {
-  background: rgba(30, 58, 138, 0.8);
+  background: rgba(122, 57, 53, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
