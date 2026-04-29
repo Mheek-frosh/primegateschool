@@ -306,6 +306,68 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Upcoming Events */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
+            <div>
+              <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-sm font-bold text-accent tracking-wider uppercase mb-2">Stay Updated</motion.h2>
+              <motion.h3 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-3xl md:text-4xl font-bold text-gray-900">Upcoming Events</motion.h3>
+            </div>
+            <Link href="/contact" className="hidden md:inline-flex items-center gap-2 text-primary font-bold hover:text-primary-light transition-colors group">
+              View All Events <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { date: "Oct 15", month: "2026", title: "Open Day & Campus Tour", desc: "Prospective parents are invited to tour our state-of-the-art facilities." },
+              { date: "Nov 02", month: "2026", title: "Inter-House Sports", desc: "Annual sports competition fostering teamwork and physical excellence." },
+              { date: "Dec 10", month: "2026", title: "End of Year Exhibition", desc: "Showcasing students' creative projects and academic achievements." }
+            ].map((event, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border-l-4 border-accent">
+                <div className="text-accent font-bold mb-4">
+                  <span className="text-3xl block">{event.date.split(' ')[1]}</span>
+                  <span className="uppercase text-sm tracking-wider">{event.date.split(' ')[0]} {event.month}</span>
+                </div>
+                <h4 className="text-xl font-bold text-gray-900 mb-2">{event.title}</h4>
+                <p className="text-gray-600">{event.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-sm font-bold text-accent tracking-wider uppercase mb-2">Testimonials</motion.h2>
+            <motion.h3 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-3xl md:text-4xl font-bold text-gray-900">What Parents Say</motion.h3>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              { text: "Primegate has completely transformed my child's approach to learning. The blend of Nigerian and British curricula is fantastic, and the teachers are incredibly supportive.", author: "Mrs. Adebayo", role: "Parent of Year 5 Student" },
+              { text: "The facilities here are unmatched in Abuja. My son loves the ICT labs, and the emphasis on holistic development means he's growing academically and socially.", author: "Mr. Okafor", role: "Parent of JSS 2 Student" }
+            ].map((testimonial, i) => (
+              <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.2 }} className="bg-slate-50 p-8 rounded-3xl relative">
+                <div className="text-accent/20 absolute top-4 left-6 text-6xl font-serif">"</div>
+                <p className="text-gray-700 text-lg mb-6 relative z-10 italic">"{testimonial.text}"</p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl">{testimonial.author[0]}</div>
+                  <div>
+                    <h4 className="font-bold text-gray-900">{testimonial.author}</h4>
+                    <p className="text-sm text-gray-500">{testimonial.role}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-24 bg-primary relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10">
